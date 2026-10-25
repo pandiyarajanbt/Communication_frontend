@@ -1,4 +1,4 @@
-mutation DeleteCandidate($id: String!) {
+mutation DeleteCandidate($id: ID!) {
   deleteCandidate(id: $id) {
     found
     deletedId

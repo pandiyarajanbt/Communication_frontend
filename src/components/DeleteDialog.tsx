@@ -17,7 +17,7 @@ export default function DeleteDialog({ open, names, deleting = false, onCancel, 
     <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth>
       <DialogTitle className="!flex !items-center !justify-between !pt-8 !text-xl !font-medium">
         Delete Candidate
-          <IconButton aria-label="Close delete confirmation" onClick={onCancel} disabled={deleting}>
+        <IconButton aria-label="Close delete confirmation" onClick={onCancel} disabled={deleting}>
           <Close />
         </IconButton>
       </DialogTitle>

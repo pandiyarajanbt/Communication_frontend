@@ -46,7 +46,7 @@ type DeleteCandidateResponse = {
   deleteCandidate: {
     found: boolean
     deletedId: string | null
-    deletedRawId: string | null
+    deletedRawId: unknown
   } | null
 }
 

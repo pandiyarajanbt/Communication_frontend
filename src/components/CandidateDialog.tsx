@@ -21,6 +21,7 @@ export default function CandidateDialog({ open, saving = false, onClose, onSave 
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if (saving) return
     onSave(draft)
   }
 
@@ -33,7 +34,7 @@ export default function CandidateDialog({ open, saving = false, onClose, onSave 
       <form onSubmit={handleSubmit}>
         <DialogTitle className="!flex !items-center !justify-between !pb-8 !pt-8 !text-xl !font-medium">
           Add Candidate
-          <IconButton aria-label="Close add candidate" onClick={onClose}>
+          <IconButton aria-label="Close add candidate" onClick={onClose} disabled={saving}>
             <Close />
           </IconButton>
         </DialogTitle>
