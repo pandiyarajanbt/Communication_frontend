@@ -1,20 +1,30 @@
 import { useState, type FormEvent } from 'react'
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
+import { Alert, Button, IconButton, InputAdornment, TextField } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 type LoginPageProps = {
-  onLogin: () => void
+  onLogin: (email: string, password: string) => Promise<void>
 }
 
 export default function LoginPage({ onLogin }: LoginPageProps) {
-  const [userId, setUserId] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (userId.trim() && password) onLogin()
+    setError('')
+    setSubmitting(true)
+    try {
+      await onLogin(email.trim(), password)
+    } catch (loginError) {
+      setError(loginError instanceof Error ? loginError.message : 'Unable to sign in. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -33,10 +43,11 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <TextField
-            label="User ID"
-            value={userId}
-            onChange={(event) => setUserId(event.target.value)}
-            autoComplete="username"
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            autoComplete="email"
             required
             fullWidth
           />
@@ -62,8 +73,15 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               ),
             }}
           />
-          <Button type="submit" variant="contained" size="large" className="mt-1 !h-12 !normal-case !text-base">
-            Sign in
+          {error && <Alert severity="error">{error}</Alert>}
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            disabled={submitting}
+            className="mt-1 !h-12 !normal-case !text-base"
+          >
+            {submitting ? 'Signing in…' : 'Sign in'}
           </Button>
         </form>
       </section>

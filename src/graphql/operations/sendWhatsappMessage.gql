@@ -1,0 +1,6 @@
+mutation SendWhatsappMessage($candidateId: Int!, $template: String!, $params: [String!]!) {
+  sendWhatsappMessage(candidateId: $candidateId, template: $template, params: $params) {
+    ok
+    error
+  }
+}

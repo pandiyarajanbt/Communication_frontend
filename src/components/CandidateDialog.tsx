@@ -5,13 +5,14 @@ import type { CandidateDraft } from '../types'
 
 type CandidateDialogProps = {
   open: boolean
+  saving?: boolean
   onClose: () => void
   onSave: (draft: CandidateDraft) => void
 }
 
-const emptyDraft: CandidateDraft = { name: '', phone: '', email: '' }
+const emptyDraft: CandidateDraft = { name: '', phone: '' }
 
-export default function CandidateDialog({ open, onClose, onSave }: CandidateDialogProps) {
+export default function CandidateDialog({ open, saving = false, onClose, onSave }: CandidateDialogProps) {
   const [draft, setDraft] = useState<CandidateDraft>(emptyDraft)
 
   useEffect(() => {
@@ -53,18 +54,12 @@ export default function CandidateDialog({ open, onClose, onSave }: CandidateDial
             fullWidth
             type="tel"
           />
-          <TextField
-            label="Email"
-            value={draft.email}
-            onChange={(event) => setField('email', event.target.value)}
-            required
-            fullWidth
-            type="email"
-          />
         </DialogContent>
         <DialogActions className="!border-t !border-slate-200 !px-10 !py-6">
-          <Button onClick={onClose} variant="outlined" className="!px-5">Cancel</Button>
-          <Button type="submit" variant="contained" className="!px-5">Add Candidate</Button>
+          <Button onClick={onClose} variant="outlined" disabled={saving} className="!px-5">Cancel</Button>
+          <Button type="submit" variant="contained" disabled={saving} className="!px-5">
+            {saving ? 'Adding…' : 'Add Candidate'}
+          </Button>
         </DialogActions>
       </form>
     </Dialog>

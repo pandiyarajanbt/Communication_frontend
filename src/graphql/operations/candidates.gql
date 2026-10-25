@@ -1,0 +1,22 @@
+query Candidates {
+  candidates {
+    edges {
+      node {
+        id
+        candidateId
+        fullName
+        phoneNumber
+        lastMessage
+        whatsappMessageId
+        status
+        timestamp
+        messages {
+          messageId
+          message
+          status
+          timestamp
+        }
+      }
+    }
+  }
+}

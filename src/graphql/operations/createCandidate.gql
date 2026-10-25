@@ -1,0 +1,14 @@
+mutation CreateCandidate($fullName: String!, $phoneNumber: String!, $status: String!) {
+  createCandidate(input: {
+    fullName: $fullName
+    phoneNumber: $phoneNumber
+    status: $status
+  }) {
+    candidate {
+      candidateId
+      fullName
+      phoneNumber
+      status
+    }
+  }
+}

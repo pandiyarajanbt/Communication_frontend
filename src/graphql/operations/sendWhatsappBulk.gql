@@ -1,0 +1,13 @@
+mutation SendWhatsappBulk($candidateIds: [Int!]!, $template: String!) {
+  sendWhatsappBulk(candidateIds: $candidateIds, template: $template) {
+    count
+    successCount
+    failedCount
+    results {
+      candidateId
+      name
+      ok
+      error
+    }
+  }
+}

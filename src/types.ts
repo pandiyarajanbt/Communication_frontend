@@ -9,12 +9,16 @@ export type Communication = {
 
 export type Candidate = {
   id: string
+  candidateId?: string
+  graphqlId?: string
   name: string
   phone: string
   email: string
   lastMessage: string | null
+  whatsappMessageId?: string | null
+  timestamp?: string | null
   status: MessageStatus | null
   communications: Communication[]
 }
 
-export type CandidateDraft = Pick<Candidate, 'name' | 'phone' | 'email'>
+export type CandidateDraft = Pick<Candidate, 'name' | 'phone'>

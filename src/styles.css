@@ -65,6 +65,15 @@ select {
   box-shadow: none;
 }
 
+.auth-user {
+  max-width: 180px;
+  overflow: hidden;
+  color: #5f6368;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .search-input {
   width: 240px;
   margin-left: 2px !important;

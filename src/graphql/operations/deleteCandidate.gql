@@ -1,0 +1,7 @@
+mutation DeleteCandidate($id: String!) {
+  deleteCandidate(id: $id) {
+    found
+    deletedId
+    deletedRawId
+  }
+}
