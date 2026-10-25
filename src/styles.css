@@ -1,0 +1,480 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Roboto, Arial, sans-serif;
+  color: #202124;
+  background: #f5f5f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.login-page {
+  background:
+    radial-gradient(ellipse at 15% 14%, rgba(33, 150, 243, 0.08), transparent 34%),
+    #f5f7fa;
+}
+
+.login-card {
+  border: 1px solid #e7e9ed;
+  box-shadow: 0 18px 55px rgba(26, 47, 73, 0.08);
+}
+
+.topbar {
+  z-index: 1;
+  border-bottom: 1px solid #ededed;
+}
+
+.topbar-actions .MuiButton-root {
+  min-width: auto;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+}
+
+.topbar-actions .MuiButton-outlined {
+  border-color: #64b5f6;
+  color: #1687e6;
+}
+
+.topbar-actions .MuiButton-contained.Mui-disabled {
+  background: #dedede;
+  color: #8b8b8b;
+}
+
+.topbar-actions .MuiButton-contained:not(.Mui-disabled) {
+  box-shadow: none;
+}
+
+.search-input {
+  width: 240px;
+  margin-left: 2px !important;
+}
+
+.search-input .MuiOutlinedInput-root {
+  height: 40px;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+}
+
+.search-input .MuiOutlinedInput-notchedOutline {
+  border-color: #c9c9c9;
+}
+
+.candidate-panel {
+  margin: 8px 8px 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.table-scroll {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 8px 0;
+  scrollbar-color: #c8c8c8 transparent;
+  scrollbar-width: thin;
+}
+
+.candidate-table {
+  flex: 0 0 auto;
+  table-layout: fixed;
+  min-width: 820px;
+}
+
+.candidate-table .select-column {
+  width: 44px;
+}
+
+.candidate-table .name-column {
+  width: 17%;
+}
+
+.candidate-table .phone-column {
+  width: 20%;
+}
+
+.candidate-table .date-column {
+  width: 20%;
+}
+
+.candidate-table .status-column {
+  width: 20%;
+}
+
+.candidate-table .id-column {
+  width: 19%;
+}
+
+.candidate-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.candidate-table th {
+  height: 48px;
+  padding: 0 12px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #cccccc;
+  color: #202124;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.candidate-table th.checkbox-cell {
+  padding: 0 4px 0 8px;
+}
+
+.column-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.column-sort {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-weight: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sort-indicator {
+  width: 14px !important;
+  height: 14px !important;
+  color: #777;
+}
+
+.candidate-table th .MuiIconButton-root {
+  color: #757575;
+}
+
+.candidate-table td {
+  height: 42px;
+  padding: 0 12px;
+  border-bottom: 1px solid #ededed;
+  color: #202124;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.candidate-table td.checkbox-cell {
+  padding: 0 4px 0 8px;
+}
+
+.candidate-table .MuiCheckbox-root {
+  padding: 4px;
+  color: #9e9e9e;
+}
+
+.candidate-table .MuiCheckbox-root.Mui-checked,
+.candidate-table .MuiCheckbox-root.MuiCheckbox-indeterminate {
+  color: #2196f3;
+}
+
+.candidate-row.selected-row td {
+  background: #e3f2fd;
+}
+
+.candidate-name {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2879e6;
+  cursor: pointer;
+  font-size: inherit;
+  text-align: left;
+}
+
+.candidate-name:hover,
+.candidate-name:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.muted-cell,
+.na-text {
+  color: #9e9e9e !important;
+}
+
+.status-badge {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.status-badge .MuiSvgIcon-root {
+  width: 15px;
+  height: 15px;
+}
+
+.status-read {
+  background: #e8f5e9;
+  color: #218838;
+}
+
+.status-failed {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.status-sent {
+  min-width: 52px;
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.table-filler {
+  flex: 1 0 130px;
+  min-height: 130px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 41px,
+    #ededed 41px,
+    #ededed 42px
+  );
+}
+
+.empty-table-state {
+  position: absolute;
+  inset: 56px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.empty-candidates {
+  min-height: 380px;
+}
+
+.empty-illustration {
+  width: 210px;
+  height: 152px;
+  flex: 0 0 auto;
+}
+
+.no-results-state {
+  position: absolute;
+  inset: 56px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  background: #fff;
+  font-size: 15px;
+}
+
+.table-pagination {
+  border-top: 0;
+  color: #202124;
+}
+
+.rows-select {
+  width: 40px;
+  padding: 2px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #202124;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.table-pagination .MuiIconButton-root {
+  color: #757575;
+}
+
+.table-pagination .MuiIconButton-root.Mui-disabled {
+  color: #bdbdbd;
+}
+
+.communication-drawer {
+  width: min(660px, 100vw);
+  background: #fff;
+}
+
+.history-list {
+  scrollbar-color: #c8c8c8 transparent;
+  scrollbar-width: thin;
+}
+
+.history-item {
+  padding: 20px 0 23px;
+  border-top: 1px solid #bdbdbd;
+}
+
+.history-item:first-child {
+  padding-top: 20px;
+}
+
+.history-item .status-badge {
+  min-width: 50px;
+}
+
+.recipient-chips .MuiChip-root {
+  height: 32px;
+  background: #eceff1;
+  color: #202124;
+  font-size: 13px;
+}
+
+.message-textarea .MuiOutlinedInput-root {
+  padding: 16px 12px;
+  align-items: flex-start;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.message-textarea textarea {
+  min-height: 165px !important;
+  resize: vertical;
+}
+
+.message-textarea textarea::placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+
+.communication-drawer .MuiButton-outlined,
+.MuiDialogActions-root .MuiButton-outlined {
+  border-color: #64b5f6;
+  color: #1687e6;
+}
+
+.success-toast {
+  background-color: #eaf6eb !important;
+  color: #202124 !important;
+  box-shadow: none !important;
+  font-size: 15px;
+}
+
+.success-toast .MuiAlert-icon {
+  color: #258b3c;
+}
+
+.MuiDrawer-root .MuiBackdrop-root,
+.MuiDialog-root .MuiBackdrop-root {
+  background: rgba(35, 35, 35, 0.12);
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 1050px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1 1 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .topbar h1 {
+    font-size: 21px;
+  }
+
+  .topbar-actions {
+    gap: 6px;
+  }
+
+  .topbar-actions .MuiButton-root {
+    flex: 1 1 calc(50% - 6px);
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 11px;
+  }
+
+  .search-input {
+    flex-basis: 100%;
+    margin-top: 2px !important;
+    margin-left: 0 !important;
+  }
+
+  .candidate-panel {
+    margin: 6px;
+  }
+
+  .table-pagination {
+    gap: 12px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .table-pagination label,
+  .table-pagination > span {
+    font-size: 12px;
+  }
+
+  .table-pagination .MuiIconButton-root {
+    padding: 5px;
+  }
+
+  .communication-drawer > .MuiPaper-root {
+    width: 100vw;
+  }
+
+  .communication-drawer header,
+  .communication-drawer > div > div > div,
+  .communication-drawer footer {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .MuiDialog-paper {
+    margin: 16px !important;
+  }
+}
