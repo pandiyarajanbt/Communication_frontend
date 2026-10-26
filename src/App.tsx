@@ -405,9 +405,9 @@ export default function App() {
               startAdornment: <InputAdornment position="start"><Search fontSize="small" /></InputAdornment>,
             }}
           />
-          <span className="auth-user" title={session.user.email}>
+          {/* <span className="auth-user" title={session.user.email}>
             {session.user.username || session.user.email}
-          </span>
+          </span> */}
           <Button
             variant="text"
             color="inherit"
